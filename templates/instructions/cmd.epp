@@ -1,0 +1,3 @@
+<% unless empty($cmd) { -%>
+CMD <%= suffix(prefix(([$cmd]).flatten, '"'), '"') %>
+<% } %>

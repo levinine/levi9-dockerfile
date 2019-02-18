@@ -1,0 +1,7 @@
+<% unless empty($arg) { -%>
+<% $arg.each |$key, $value| { -%>
+ARG <%= $key -%><% unless empty($value) { -%>
+=<%= $value -%>
+<% } %>
+<% } -%>
+<% } -%>

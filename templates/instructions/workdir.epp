@@ -1,0 +1,3 @@
+<% unless empty($workdir) { -%>
+WORKDIR <%= $workdir %>
+<% } -%>

@@ -1,0 +1,5 @@
+<% unless empty($from) { -%>
+FROM <%= $from['image'] %><% unless empty($from['as']) { -%>
+ AS <%= $from['as'] -%>
+<% } %>
+<% } -%>

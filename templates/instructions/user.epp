@@ -1,0 +1,3 @@
+<% unless empty($user) { -%>
+USER <%= $user %>
+<% } %>

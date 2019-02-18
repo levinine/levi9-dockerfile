@@ -1,0 +1,3 @@
+<% unless empty($shell) { -%>
+SHELL <%= suffix(prefix(([$shell]).flatten, '"'), '"') %>
+<% } %>

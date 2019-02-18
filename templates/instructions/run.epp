@@ -1,0 +1,11 @@
+<% unless empty($run) { -%>
+<% if $run =~ Array { -%>
+RUN <% $run[0,-2].each |$command| { -%>
+<%= "${command} && \\" %>
+<% } -%>
+<%= $run[-1] %>
+<% } -%>
+<% else { -%>
+<%= $run %>
+<% } -%>
+<% } -%>

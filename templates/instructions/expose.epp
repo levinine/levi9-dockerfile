@@ -1,0 +1,3 @@
+<% unless empty($expose) { -%>
+EXPOSE <%= $expose %>
+<% } %>

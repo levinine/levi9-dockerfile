@@ -1,0 +1,3 @@
+<% unless empty($entrypoint) { -%>
+ENTRYPOINT <%= suffix(prefix(([$entrypoint]).flatten, '"'), '"') %>
+<% } %>

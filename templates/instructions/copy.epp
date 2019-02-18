@@ -1,0 +1,3 @@
+<% unless empty($copy) { -%>
+COPY <% unless empty($copy['from']) { -%><%= "--from=${copy['from']} " -%><% } -%><%= suffix(prefix(([$copy['source']] + [$copy['destination']]).flatten, '"'), '"') %>
+<% } %>

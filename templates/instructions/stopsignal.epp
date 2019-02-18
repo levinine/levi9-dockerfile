@@ -1,0 +1,3 @@
+<% unless empty($stopsignal) { -%>
+STOPSIGNAL <%= $stopsignal %>
+<% } %>
