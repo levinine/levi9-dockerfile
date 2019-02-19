@@ -2,6 +2,6 @@
 <% $label.each |$key, $value| { -%>
 LABEL <%= $key -%><% unless empty($value) { -%>
 ="<%= $value -%>"
-<% } %>
 <% } -%>
+<% } %>
 <% } -%>

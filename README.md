@@ -49,7 +49,7 @@ puppet module install levinine-dockerfile
 In order to provide configuration for dockerfile use the `dockerfile::config` defined type in the manifest file:
 
 ```puppet
-docker::config { 'Dockerfile': 
+dockerfile::config { 'Dockerfile': 
   ensure => 'present',
   home   => '/var/lib/jenkins/Docker-Build',
   type   => 'multistage',
@@ -63,7 +63,7 @@ docker::config { 'Dockerfile':
 
 Multistage config type Hiera example:
 ```
-dockerfile::config:
+dockerfile::configs:
   Multistage:
     type: multistage
     home: /var/lib/jenkins/Docker-Build
@@ -219,7 +219,7 @@ dockerfile::config:
 
 Plain config type Hiera example:
 ```
-dockerfile::config:
+dockerfile::configs:
   Plain:
     type: plain
     home: /var/lib/jenkins/Docker-Build
@@ -275,6 +275,11 @@ dockerfile::config:
 
 ### Parameters
 
+#### Class: dockerfile
+
+##### `configs`
+*Optional* Creates `dockerfile::config` resources.
+
 #### Type: dockerfile::config
 
 ##### `ensure`
@@ -296,7 +301,7 @@ dockerfile::config:
 
 ## Limitations
 
-This module depends on Puppetlabs Concat module, it should be working on all operating systems support by this module.
+This module depends on Puppetlabs Concat module, it should be working on all operating systems supported by this module.
 
 ## Development - Guide for contributing to the module
 
