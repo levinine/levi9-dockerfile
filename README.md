@@ -10,6 +10,7 @@
 4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
    * [Classes](#classes)
    * [Defined types](#defined-types)
+   * [Functions](#functions)
    * [Parameters](#parameters)
 5. [Development - Guide for contributing to the module](#development)
 6. [Contributors](#contributors)
@@ -135,12 +136,7 @@ dockerfile::configs:
         shell:
           - powershell
           - noprofile
-        healthcheck:
-          interval: 30s
-          timeout: 30s
-          start-period: 0s
-          retries: 3
-          cmd: curl http://localhost
+        order: '10'
       Stage2:
         arg:
           BUILD_NUM: latest
@@ -149,7 +145,6 @@ dockerfile::configs:
           SOMEARG3: ''
         from:
           image: centos:7.6.1810
-          as: TEST
         env:
           NUM: $BUILD_NUM
           SOMEENV: test
@@ -214,7 +209,39 @@ dockerfile::configs:
           start-period: 0s
           retries: 3
           cmd: curl http://localhost
+        order: '20'
 ```
+
+Multiple COPY/RUN instructions Hiera example:
+```
+dockerfile::configs:
+  Multistage:
+    type: multistage
+    home: /var/lib/jenkins/Docker-Build
+    conf:
+      Stage1:
+        from:
+          image: centos:7.6.1810
+          as: TEST
+      Copy1:
+        copy:
+          from: TEST
+          source:
+            - /tmp1
+          destination: /home
+      Run1:
+        run:
+          - apt-get update
+          - apt-get clean
+      Copy2:
+        copy:
+          source:
+            - /tmp2
+          destination: /home
+      Stage2:
+          expose: 80/tcp
+```
+
 #### Plain
 
 Plain config type Hiera example:
@@ -222,7 +249,7 @@ Plain config type Hiera example:
 dockerfile::configs:
   Plain:
     type: plain
-    home: /var/lib/jenkins/Docker-Build
+    home: /var/lib/jenkins/Docker-Build2
     conf: |
       FROM ubuntu:18.04 as BUILD
 
@@ -272,6 +299,12 @@ dockerfile::configs:
 * dockerfile::config::stage
 * dockerfile::config::plain
 * dockerfile::config::multistage
+
+### Functions
+
+#### Private functions
+
+* order_dockerfile_stages
 
 ### Parameters
 
