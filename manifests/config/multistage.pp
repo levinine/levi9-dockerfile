@@ -14,7 +14,7 @@ define dockerfile::config::multistage
       dockerfile => $dockerfile,
     }
 
-    $unique_stages = prefix($conf, "${name}-")
+    $unique_stages = prefix(order_dockerfile_stages($conf), "${name}-")
 
     create_resources('dockerfile::config::stage', $unique_stages, $stage_defaults)
   }

@@ -20,10 +20,12 @@ define dockerfile::config::stage
     Variant[Array, String, Undef] $run        = undef,
     Hash $pre                                 = {},
     Hash $post                                = {},
+    Variant[String, Undef] $order             = undef,
   )
   {
     concat::fragment { $name:
       target  => $dockerfile,
+      order   => $order,
       content => join([
         epp('dockerfile/instructions/arg.epp', { 'arg' => $arg }),
         epp('dockerfile/instructions/from.epp', { 'from' => $from }),

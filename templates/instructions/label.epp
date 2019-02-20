@@ -3,5 +3,5 @@
 LABEL <%= $key -%><% unless empty($value) { -%>
 ="<%= $value -%>"
 <% } -%>
-<% } %>
 <% } -%>
+<% } %>
