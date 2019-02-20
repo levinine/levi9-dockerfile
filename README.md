@@ -72,9 +72,8 @@ dockerfile::configs:
       Stage1:
         arg:
           BUILD_NUM: latest
-          SOMEARG: ''
+          SOMEARG1: ''
           SOMEARG2: 5
-          SOMEARG3: ''
         from:
           image: centos:7.6.1810
           as: TEST
@@ -88,7 +87,7 @@ dockerfile::configs:
         copy:
           from: 0
           source:
-            - /tmp
+            - /tmp with space
             - /test
           destination: /home
         add:
@@ -104,30 +103,7 @@ dockerfile::configs:
           - /bin/sh
           - -c
           - top
-        user: 0:0
-        pre:
-          run:
-            - ls
-          copy:
-            source:
-              - /tmp
-              - /test
-            destination: /home
-          add:
-            source: /tmp
-            destination: /home
-        post:
-          run:
-            - ls in post
-          copy:
-            source:
-              - /tmp
-              - /test
-            destination: /home
-          add:
-            source:
-              - /tmp with space
-            destination: /home with space
+        user: '0:0'
         run:
           - apt-get update
           - apt-get clean
@@ -138,11 +114,6 @@ dockerfile::configs:
           - noprofile
         order: '10'
       Stage2:
-        arg:
-          BUILD_NUM: latest
-          SOMEARG: ''
-          SOMEARG2: 5
-          SOMEARG3: ''
         from:
           image: centos:7.6.1810
         env:
@@ -171,30 +142,7 @@ dockerfile::configs:
           - /bin/sh
           - -c
           - top
-        user: 0:0
-        pre:
-          run:
-            - ls
-          copy:
-            source:
-              - /tmp
-              - /test
-            destination: /home
-          add:
-            source: /tmp
-            destination: /home
-        post:
-          run:
-            - ls in post
-          copy:
-            source:
-              - /tmp
-              - /test
-            destination: /home
-          add:
-            source:
-              - /tmp with space
-            destination: /home with space
+        user: '0:0'
         run:
           - apt-get update
           - apt-get clean
@@ -316,13 +264,13 @@ dockerfile::configs:
 #### Type: dockerfile::config
 
 ##### `ensure`
-*Optional* Whether the dockerfile should exist. Valid values are 'present', 'absent'. Defaults to 'present'.
+*Optional* Whether the Dockerfile should exist. Valid values are 'present', 'absent'. Defaults to 'present'.
 
 ##### `home`
-*Required* Directory in which dockerfile will be created.
+*Required* Directory in which Dockerfile will be created.
 
 ##### `dockerfile_name`
-*Optional* Name of dockerfile. Defaults to 'Dockerfile'.
+*Optional* Name of Dockerfile. Defaults to 'Dockerfile'.
 
 ##### `type`
 *Optional* Type of Dockerfile configuration type. Valid values are 'multistage', 'plain'. Defaults to 'plain'.
@@ -330,7 +278,7 @@ dockerfile::configs:
 ##### `conf`
 *Optional* Configuration of Dockerfile. Depends on type:
 * plain - Text that will be placed in Dockerfile.
-* multistage - Hash with key as stage names and values as dockerfile instructions.
+* multistage - Hash with keys as stage names and values as Dockerfile instructions.
 
 ## Limitations
 

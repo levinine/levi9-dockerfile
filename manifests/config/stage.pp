@@ -1,4 +1,78 @@
+# == Define: dockerfile::config::stage
 #
+# Single stage configuration for docker::config::multistage. Private defined type.
+#
+# == Parameters
+#
+# [*dockerfile*]
+#  Target of concat::fragment.
+#  Mandatory
+#
+# [*arg*]
+#  ARG instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*from*]
+#  FROM instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*copy*]
+#  COPY instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*add*]
+#  ADD instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*env*]
+#  ENV instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*expose*]
+#  EXPOSE instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*label*]
+#  LABEL instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*stopsignal*]
+#  STOPSIGNAL instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*user*]
+#  USER instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*volume*]
+#  VOLUME instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*workdir*]
+#  WORKDIR instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*healthcheck*]
+#  HEALTHCHECK instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*cmd*]
+#  CMD instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*entrypoint*]
+#  ENTRYPOINT instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*shell*]
+#  SHELL instruction of Dockerfile.
+#  Defaults to undef
+#
+# [*run*]
+#  RUN instruction of Dockerfile.
+#  Defaults to undef
+#
+
 define dockerfile::config::stage
   (
     String $dockerfile,
