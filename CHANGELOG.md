@@ -1,3 +1,7 @@
+# Version 1.2.1
+
+Updated documentation
+
 # Version 1.2.0
 
 Implemented persistent ordering for multistages

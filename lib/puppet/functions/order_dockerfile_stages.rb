@@ -1,4 +1,4 @@
-# Increments order attribute in each stage if not already defined
+# Increments order attribute in each stage by increment of 10 starting from '10' if not already defined
 #
 # @example
 #     {
