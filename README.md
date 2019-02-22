@@ -273,7 +273,7 @@ dockerfile::configs:
 *Optional* Name of Dockerfile. Defaults to 'Dockerfile'.
 
 ##### `type`
-*Optional* Type of Dockerfile configuration type. Valid values are 'multistage', 'plain'. Defaults to 'plain'.
+*Optional* Type of Dockerfile configuration type. Valid values are 'multistage', 'plain'. Defaults to 'multistage'.
 
 ##### `conf`
 *Optional* Configuration of Dockerfile. Depends on type:

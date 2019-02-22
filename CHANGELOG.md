@@ -1,3 +1,7 @@
+# Version 1.3.0
+
+Manage permissions of Dockerfile
+
 # Version 1.2.1
 
 Updated documentation

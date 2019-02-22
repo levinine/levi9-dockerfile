@@ -1,14 +1,9 @@
-# == Class: dockerfiles
 #
-# Manage content of Dockerfiles.
+# @summary Manage content of Dockerfiles.
 #
-# == Parameters
+# @param configs
+#   Configurations for Dockerfiles. Creates dockerfile::config resources.
 #
-# [*configs*]
-#  Configurations for Dockerfiles. Creates dockerfile::config resources.
-#  Deafults to {}
-#
-
 class dockerfile
 (
   $configs = {}
