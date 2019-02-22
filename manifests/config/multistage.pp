@@ -1,31 +1,34 @@
-# == Define: dockerfile::config::multistage
 #
-# Manage Dockerfile using concat resource. Supports multistages.
+# @summary Manage Dockerfile using concat resource. Supports multistages.
 #
-# == Parameters
+# @param dockerfile
+#   Full path to Dockarefile to manage.
+# @param conf
+#   Configuration in key/value form. Keys are mapped to names of dockerfile::config::stage resources.
+# @param ensure
+#   Manage existance of Dockerfile.
+# @param owner
+#   Specifies the owner of the destination file.
+# @param group
+#   Specifies a permissions group for the destination file.
+# @param mode
+#   Specifies the permissions mode of the destination file.
 #
-# [*dockerfile*]
-#  Full path to Dockarefile to manage.
-#  Mandatory
-#
-# [*conf*]
-#  Configuration in key/value form. Keys are mapped to names of dockerfile::config::stage resources.
-#  Mandatory
-#
-# [*ensure*]
-#  Manage existance of Dockerfile.
-#  Defaults to 'present'
-#
-
 define dockerfile::config::multistage
   (
     String $dockerfile,
     Hash   $conf,
-    String $ensure = 'present',
+    String $ensure                            = 'present',
+    Optional[Variant[String, Integer]] $owner = undef,
+    Optional[Variant[String, Integer]] $group = undef,
+    Optional[Variant[String, Integer]] $mode  = undef,
   )
   {
     concat { $dockerfile:
       ensure => $ensure,
+      owner  => $owner,
+      group  => $group,
+      mode   => $mode,
     }
 
     $stage_defaults = {
