@@ -7,12 +7,12 @@
    * [Config](#config)
      * [Multistage](#multistage)
      * [Plain](#plain)
-4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+4. [Reference](#reference)
    * [Classes](#classes)
    * [Defined types](#defined-types)
    * [Functions](#functions)
    * [Parameters](#parameters)
-5. [Development - Guide for contributing to the module](#development)
+5. [Development](#development)
 6. [Contributors](#contributors)
 
 ## Description
@@ -70,6 +70,7 @@ dockerfile::configs:
     home: /var/lib/jenkins/Docker-Build
     conf:
       Stage1:
+        ensure: present
         arg:
           BUILD_NUM: latest
           SOMEARG1: ''
@@ -114,6 +115,7 @@ dockerfile::configs:
           - noprofile
         order: '10'
       Stage2:
+        ensure: present
         from:
           image: centos:7.6.1810
         env:
@@ -178,6 +180,7 @@ dockerfile::configs:
             - /tmp1
           destination: /home
       Run1:
+        ensure: absent
         run:
           - apt-get update
           - apt-get clean
@@ -232,63 +235,15 @@ dockerfile::configs:
 
 ## Reference
 
-### Classes
-
-#### Public classes
-
-* dockerfile
-
-### Defined types
-
-* dockerfile::config
-
-#### Private defined types
-
-* dockerfile::config::stage
-* dockerfile::config::plain
-* dockerfile::config::multistage
-
-### Functions
-
-#### Private functions
-
-* order_dockerfile_stages
-
-### Parameters
-
-#### Class: dockerfile
-
-##### `configs`
-*Optional* Creates `dockerfile::config` resources.
-
-#### Type: dockerfile::config
-
-##### `ensure`
-*Optional* Whether the Dockerfile should exist. Valid values are 'present', 'absent'. Defaults to 'present'.
-
-##### `home`
-*Required* Directory in which Dockerfile will be created.
-
-##### `dockerfile_name`
-*Optional* Name of Dockerfile. Defaults to 'Dockerfile'.
-
-##### `type`
-*Optional* Type of Dockerfile configuration type. Valid values are 'multistage', 'plain'. Defaults to 'multistage'.
-
-##### `conf`
-*Optional* Configuration of Dockerfile. Depends on type:
-* plain - Text that will be placed in Dockerfile.
-* multistage - Hash with keys as stage names and values as Dockerfile instructions.
+See [Reference](REFERENCE.md)
 
 ## Limitations
 
 This module depends on Puppetlabs Concat module, it should be working on all operating systems supported by this module.
 
-## Development - Guide for contributing to the module
+## Development
 
-Puppet modules on the Puppet Forge are open projects, and community contributions are essential for keeping them great.
-
-For more information, see Puppet's module contribution guide.
+Use [Report Issues](https://github.com/levinine/levinine-dockerfile/issues) link to report any issues.
 
 ## Contributors
 - Mladen Pavlik

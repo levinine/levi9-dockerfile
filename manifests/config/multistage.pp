@@ -2,7 +2,7 @@
 # @summary Manage Dockerfile using concat resource. Supports multistages.
 #
 # @param dockerfile
-#   Full path to Dockarefile to manage.
+#   Full path to Dockerfile to manage.
 # @param conf
 #   Configuration in key/value form. Keys are mapped to names of dockerfile::config::stage resources.
 # @param ensure
@@ -33,6 +33,7 @@ define dockerfile::config::multistage
 
     $stage_defaults = {
       dockerfile => $dockerfile,
+      ensure     => $ensure,
     }
 
     $unique_stages = prefix(order_dockerfile_stages($conf), "${name}-")
