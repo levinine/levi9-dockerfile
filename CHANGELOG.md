@@ -1,3 +1,7 @@
+# Version 1.3.1
+
+Make stages ensurable
+
 # Version 1.3.0
 
 Manage permissions of Dockerfile
