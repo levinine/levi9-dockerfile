@@ -1,3 +1,9 @@
+# Version 1.4.0
+
+Supported chown option in COPY instruction
+
+Removed dependency on stdlib
+
 # Version 1.3.1
 
 Make stages ensurable
@@ -18,6 +24,6 @@ Implemented persistent ordering for multistages
 
 Added creating of resources from init.pp
 
-# Version 1.1.0
+# Version 1.0.0
 
 Initial Version

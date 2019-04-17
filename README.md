@@ -8,10 +8,6 @@
      * [Multistage](#multistage)
      * [Plain](#plain)
 4. [Reference](#reference)
-   * [Classes](#classes)
-   * [Defined types](#defined-types)
-   * [Functions](#functions)
-   * [Parameters](#parameters)
 5. [Development](#development)
 6. [Contributors](#contributors)
 
@@ -127,6 +123,7 @@ dockerfile::configs:
         expose: 80/tcp
         copy:
           from: 0
+          chown: '0:0'
           source:
             - /tmp
             - /test
@@ -190,7 +187,7 @@ dockerfile::configs:
             - /tmp2
           destination: /home
       Stage2:
-          expose: 80/tcp
+        expose: 80/tcp
 ```
 
 #### Plain
@@ -235,7 +232,7 @@ dockerfile::configs:
 
 ## Reference
 
-See [Reference](REFERENCE.md)
+See [Reference](https://github.com/levinine/levinine-dockerfile/blob/master/REFERENCE.md).
 
 ## Limitations
 
