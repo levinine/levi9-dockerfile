@@ -1,0 +1,10 @@
+---
+appveyor.yml:
+  delete: true
+  unmanaged: true
+.gitlab-ci.yml:
+  delete: true
+  unmanaged: true
+.travis.yml:
+  delete: true
+  unmanaged: true
