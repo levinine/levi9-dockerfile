@@ -36,7 +36,7 @@ define dockerfile::config::multistage
       ensure     => $ensure,
     }
 
-    $unique_stages = prefix(order_dockerfile_stages($conf), "${name}-")
+    $unique_stages = order_dockerfile_stages($conf, "${name}-")
 
     create_resources('dockerfile::config::stage', $unique_stages, $stage_defaults)
   }

@@ -16,7 +16,7 @@
 
 **Functions**
 
-* [`order_dockerfile_stages`](#order_dockerfile_stages): Increments order attribute in each stage by increment of 10 starting from '10' if not already defined
+* [`order_dockerfile_stages`](#order_dockerfile_stages): Increments order attribute in each stage by increment of 10 starting from '10' if not already defined. Stages are prefixed with prefix in ord
 
 ## Classes
 
@@ -395,17 +395,25 @@ Default value: `undef`
 
 Type: Ruby 4.x API
 
-Increments order attribute in each stage by increment of 10 starting from '10' if not already defined
+Increments order attribute in each stage by increment of 10 starting from '10' if not already defined.
+Stages are prefixed with prefix in order to avoid duplicate declarations.
 
-#### `order_dockerfile_stages(Hash $hash)`
+#### `order_dockerfile_stages(Hash $hash, String $prefix)`
 
-Increments order attribute in each stage by increment of 10 starting from '10' if not already defined
+Increments order attribute in each stage by increment of 10 starting from '10' if not already defined.
+Stages are prefixed with prefix in order to avoid duplicate declarations.
 
-Returns: `Hash` Transformed hash with added order attributes
+Returns: `Hash` Transformed hash with added order attributes and prefixed keys
 
 ##### `hash`
 
 Data type: `Hash`
 
 Multistage hash for ordering.
+
+##### `prefix`
+
+Data type: `String`
+
+Prefix for hash keys.
 
