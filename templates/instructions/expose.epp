@@ -1,3 +1,9 @@
 <% unless empty($expose) { -%>
+<% if $expose =~ Array[Variant[String, Integer]] { %>
+<% $expose.each | $value| { -%>
+EXPOSE <%= $value %>
+<% } %>
+<% } else { -%>
 EXPOSE <%= $expose %>
+<% } %>
 <% } %>

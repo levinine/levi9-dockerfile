@@ -1,3 +1,7 @@
+# Version 1.4.1
+
+EXPOSE parameter now accepts array
+
 # Version 1.4.0
 
 Supported chown option in COPY instruction
