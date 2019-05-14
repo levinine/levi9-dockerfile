@@ -49,7 +49,7 @@ define dockerfile::config::stage
     Variant[Hash, Undef] $copy                                               = undef,
     Variant[Hash, Undef] $add                                                = undef,
     Variant[Hash, Undef] $env                                                = undef,
-    Variant[Array[Variant[String, Integer]], String, Integer, Undef] $expose = undef, # String,Integer are left for compatibility with older versions
+    Variant[Array[Variant[String, Integer]], String, Integer, Undef] $expose = undef,
     Variant[Hash, Undef] $label                                              = undef,
     Variant[String, Undef] $stopsignal                                       = undef,
     Variant[String, Undef] $user                                             = undef,

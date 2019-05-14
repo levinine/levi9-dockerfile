@@ -246,3 +246,4 @@ Use [Report Issues](https://github.com/levinine/levinine-dockerfile/issues) link
 - Mladen Pavlik
 - Dragan Nastic
 - Karolj Kocmaros
+- Marko Stojanovic

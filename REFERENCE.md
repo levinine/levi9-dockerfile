@@ -279,7 +279,7 @@ Default value: `undef`
 
 ##### `expose`
 
-Data type: `Variant[String, Integer, Undef]`
+Data type: `Variant[Array[Variant[String, Integer]], String, Integer, Undef]`
 
 EXPOSE instruction of Dockerfile.
 
