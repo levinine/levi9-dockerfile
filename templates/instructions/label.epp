@@ -1,5 +1,8 @@
 <% unless empty($label) { -%>
 <% $label.each |$key, $value| { -%>
+<% if $onbuild { -%>
+<%= 'ONBUILD ' -%>
+<% } -%>
 LABEL <%= $key -%><% unless empty($value) { -%>
 ="<%= $value -%>"
 <% } -%>

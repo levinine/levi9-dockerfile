@@ -1,3 +1,6 @@
 <% unless empty($entrypoint) { -%>
+<% if $onbuild { -%>
+<%= 'ONBUILD ' -%>
+<% } -%>
 ENTRYPOINT <%= suffix(prefix(([$entrypoint]).flatten, '"'), '"') %>
 <% } %>

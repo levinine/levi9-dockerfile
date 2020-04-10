@@ -1,9 +1,15 @@
 <% unless empty($expose) { -%>
 <% if $expose =~ Array[Variant[String, Integer]] { %>
 <% $expose.each | $value| { -%>
+<% if $onbuild { -%>
+<%= 'ONBUILD ' -%>
+<% } -%>
 EXPOSE <%= $value %>
-<% } %>
+<% } -%>
 <% } else { -%>
+<% if $onbuild { -%>
+<%= 'ONBUILD ' -%>
+<% } -%>
 EXPOSE <%= $expose %>
-<% } %>
-<% } %>
+<% } -%>
+<% } -%>

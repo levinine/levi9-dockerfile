@@ -1,6 +1,6 @@
 {
   "name": "levinine-dockerfile",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "author": "levinine",
   "summary": "Manage Dockerfile",
   "license": "Apache-2.0",
@@ -10,7 +10,7 @@
   "dependencies": [
     {
       "name": "puppetlabs/concat",
-      "version_requirement": ">= 5.1.0 < 6.0.0"
+      "version_requirement": ">= 5.1.0 <= 6.2.0"
     }
   ],
   "operatingsystem_support": [

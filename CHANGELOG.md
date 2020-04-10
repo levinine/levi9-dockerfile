@@ -1,3 +1,7 @@
+# Version 1.5.0
+
+Added support for ONBUILD instruction
+
 # Version 1.4.1
 
 EXPOSE parameter now accepts array

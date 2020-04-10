@@ -365,6 +365,14 @@ RUN instruction of Dockerfile.
 
 Default value: `undef`
 
+##### `onbuild`
+
+Data type: `Boolean`
+
+All instructions in this stage will be prefixed with ONBUILD.
+
+Default value: `false`
+
 ##### `pre`
 
 Data type: `Hash`
@@ -398,12 +406,68 @@ Type: Ruby 4.x API
 Increments order attribute in each stage by increment of 10 starting from '10' if not already defined.
 Stages are prefixed with prefix in order to avoid duplicate declarations.
 
+#### Examples
+
+##### Calling the function
+
+```puppet
+order_dockerfile_stages({
+  Stage1 => {},
+  Stage2 => {},
+  Stage3 => {
+    order => '15'
+    }
+  },
+  'prefix-'
+)
+will return
+{
+  prefix-Stage1 => {
+    order => '10'
+  },
+  prefix-Stage2 => {
+    order => '20'
+  },
+  prefix-Stage3 => {
+    order => '15'
+  }
+}
+```
+
 #### `order_dockerfile_stages(Hash $hash, String $prefix)`
 
 Increments order attribute in each stage by increment of 10 starting from '10' if not already defined.
 Stages are prefixed with prefix in order to avoid duplicate declarations.
 
 Returns: `Hash` Transformed hash with added order attributes and prefixed keys
+
+##### Examples
+
+###### Calling the function
+
+```puppet
+order_dockerfile_stages({
+  Stage1 => {},
+  Stage2 => {},
+  Stage3 => {
+    order => '15'
+    }
+  },
+  'prefix-'
+)
+will return
+{
+  prefix-Stage1 => {
+    order => '10'
+  },
+  prefix-Stage2 => {
+    order => '20'
+  },
+  prefix-Stage3 => {
+    order => '15'
+  }
+}
+```
 
 ##### `hash`
 

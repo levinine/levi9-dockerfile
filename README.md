@@ -14,7 +14,7 @@
 ## Description
 
 The Puppet dockerfile module manage content of dockerfile, exposing instructions as key/values while supporting multistage builds.
-Following [instructions](https://docs.docker.com/engine/reference/builder/) are supported:
+All dockerfile [instructions](https://docs.docker.com/engine/reference/builder/) are supported:
 - ADD
 - ARG
 - CMD
@@ -25,6 +25,8 @@ Following [instructions](https://docs.docker.com/engine/reference/builder/) are 
 - FROM
 - HEALTHCHECK
 - LABEL
+- ONBUILD
+- RUN
 - SHELL
 - STOPSIGNAL
 - USER
@@ -182,6 +184,7 @@ dockerfile::configs:
           - apt-get update
           - apt-get clean
       Copy2:
+        onbuild: true
         copy:
           source:
             - /tmp2

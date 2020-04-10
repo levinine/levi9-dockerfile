@@ -1,5 +1,8 @@
 <% unless empty($run) { -%>
 <% if $run =~ Array { -%>
+<% if $onbuild { -%>
+<%= 'ONBUILD ' -%>
+<% } -%>
 RUN <% $run[0,-2].each |$command| { -%>
 <%= "${command} && \\" %>
 <% } -%>

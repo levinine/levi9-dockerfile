@@ -1,3 +1,6 @@
 <% unless empty($volume) { -%>
+<% if $onbuild { -%>
+<%= 'ONBUILD ' -%>
+<% } -%>
 VOLUME <%= suffix(prefix(([$volume]).flatten, '"'), '"') %>
 <% } -%>

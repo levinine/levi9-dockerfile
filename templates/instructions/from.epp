@@ -1,4 +1,7 @@
 <% unless empty($from) { -%>
+<% if $onbuild { -%>
+<%= 'ONBUILD ' -%>
+<% } -%>
 FROM <%= $from['image'] %><% unless empty($from['as']) { -%>
  AS <%= $from['as'] -%>
 <% } %>
