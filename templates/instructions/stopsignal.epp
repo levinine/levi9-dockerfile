@@ -1,3 +1,6 @@
 <% unless empty($stopsignal) { -%>
+<% if $onbuild { -%>
+<%= 'ONBUILD ' -%>
+<% } -%>
 STOPSIGNAL <%= $stopsignal %>
 <% } -%>

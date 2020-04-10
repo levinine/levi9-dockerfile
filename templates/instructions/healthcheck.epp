@@ -1,5 +1,8 @@
 <% unless empty($healthcheck) { -%>
-<%= "HEALTHCHECK " -%>
+<% if $onbuild { -%>
+<%= 'ONBUILD ' -%>
+<% } -%>
+<%= 'HEALTHCHECK ' -%>
 <% if $healthcheck =~ String { -%>
 <%= $healthcheck %>
 <% } else { -%>

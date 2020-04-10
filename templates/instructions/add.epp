@@ -1,3 +1,6 @@
 <% unless empty($add) { -%>
+<% if $onbuild { -%>
+<%= 'ONBUILD ' -%>
+<% } -%>
 ADD <% unless empty($add['chown']) { -%><%= "--chown=${add['chown']} " -%><% } -%><%= suffix(prefix(([$add['source']] + [$add['destination']]).flatten, '"'), '"') %>
 <% } %>

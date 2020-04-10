@@ -1,3 +1,6 @@
 <% unless empty($user) { -%>
+<% if $onbuild { -%>
+<%= 'ONBUILD ' -%>
+<% } -%>
 USER <%= $user %>
 <% } %>

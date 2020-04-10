@@ -14,7 +14,7 @@ Puppet::Functions.create_function(:order_dockerfile_stages) do
   #     },
   #     'prefix-'
   #   )
-  # will return
+  #   will return
   #   {
   #     prefix-Stage1 => {
   #       order => '10'

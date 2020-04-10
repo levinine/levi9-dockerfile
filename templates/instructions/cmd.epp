@@ -1,3 +1,6 @@
 <% unless empty($cmd) { -%>
+<% if $onbuild { -%>
+<%= 'ONBUILD ' -%>
+<% } -%>
 CMD <%= suffix(prefix(([$cmd]).flatten, '"'), '"') %>
 <% } %>

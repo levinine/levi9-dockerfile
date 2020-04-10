@@ -39,6 +39,8 @@
 #   SHELL instruction of Dockerfile.
 # @param run
 #   RUN instruction of Dockerfile.
+# @param onbuild
+#   All instructions in this stage will be prefixed with ONBUILD.
 #
 define dockerfile::config::stage
   (
@@ -60,39 +62,41 @@ define dockerfile::config::stage
     Variant[Array, Undef] $entrypoint                                        = undef,
     Variant[Array, Undef] $shell                                             = undef,
     Variant[Array, String, Undef] $run                                       = undef,
+    Boolean $onbuild                                                         = false,
     Hash $pre                                                                = {},
     Hash $post                                                               = {},
     Variant[String, Undef] $order                                            = undef,
   )
   {
     if $ensure != 'absent' {
+      $content = join([
+        epp('dockerfile/instructions/arg.epp', { 'arg' => $arg, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/from.epp', { 'from' => $from, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/env.epp', { 'env' => $env, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/workdir.epp', { 'workdir' => $workdir, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/shell.epp', { 'shell' => $shell, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/run.epp', { 'run' => $pre['run'], 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/add.epp', { 'add' => $pre['add'], 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/copy.epp', { 'copy' => $pre['copy'], 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/run.epp', { 'run' => $run, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/add.epp', { 'add' => $add, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/copy.epp', { 'copy' => $copy, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/run.epp', { 'run' => $post['run'], 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/add.epp', { 'add' => $post['add'], 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/copy.epp', { 'copy' => $post['copy'], 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/expose.epp', { 'expose' => $expose, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/label.epp', { 'label' => $label, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/stopsignal.epp', { 'stopsignal' => $stopsignal, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/user.epp', { 'user' => $user, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/volume.epp', { 'volume' => $volume, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/cmd.epp', { 'cmd' => $cmd, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/entrypoint.epp', { 'entrypoint' => $entrypoint, 'onbuild' => $onbuild }),
+        epp('dockerfile/instructions/healthcheck.epp', { 'healthcheck' => $healthcheck, 'onbuild' => $onbuild }),
+      ])
       concat::fragment { $name:
         target  => $dockerfile,
         order   => $order,
-        content => join([
-          epp('dockerfile/instructions/arg.epp', { 'arg' => $arg }),
-          epp('dockerfile/instructions/from.epp', { 'from' => $from }),
-          epp('dockerfile/instructions/env.epp', { 'env' => $env }),
-          epp('dockerfile/instructions/workdir.epp', { 'workdir' => $workdir }),
-          epp('dockerfile/instructions/shell.epp', { 'shell' => $shell }),
-          epp('dockerfile/instructions/run.epp', { 'run' => $pre['run'] }),
-          epp('dockerfile/instructions/add.epp', { 'add' => $pre['add'] }),
-          epp('dockerfile/instructions/copy.epp', { 'copy' => $pre['copy'] }),
-          epp('dockerfile/instructions/run.epp', { 'run' => $run }),
-          epp('dockerfile/instructions/add.epp', { 'add' => $add }),
-          epp('dockerfile/instructions/copy.epp', { 'copy' => $copy }),
-          epp('dockerfile/instructions/run.epp', { 'run' => $post['run'] }),
-          epp('dockerfile/instructions/add.epp', { 'add' => $post['add'] }),
-          epp('dockerfile/instructions/copy.epp', { 'copy' => $post['copy'] }),
-          epp('dockerfile/instructions/expose.epp', { 'expose' => $expose }),
-          epp('dockerfile/instructions/label.epp', { 'label' => $label }),
-          epp('dockerfile/instructions/stopsignal.epp', { 'stopsignal' => $stopsignal }),
-          epp('dockerfile/instructions/user.epp', { 'user' => $user }),
-          epp('dockerfile/instructions/volume.epp', { 'volume' => $volume }),
-          epp('dockerfile/instructions/cmd.epp', { 'cmd' => $cmd }),
-          epp('dockerfile/instructions/entrypoint.epp', { 'entrypoint' => $entrypoint }),
-          epp('dockerfile/instructions/healthcheck.epp', { 'healthcheck' => $healthcheck }),
-        ])
+        content => $content,
       }
     }
   }
