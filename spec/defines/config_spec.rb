@@ -5,7 +5,9 @@ require 'spec_helper'
 describe 'dockerfile::config' do
   let(:title) { 'namevar' }
   let(:params) do
-    {}
+    {
+        home: '/tmp'
+    }
   end
 
   on_supported_os.each do |os, os_facts|

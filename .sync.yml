@@ -8,3 +8,8 @@ appveyor.yml:
 .travis.yml:
   delete: true
   unmanaged: true
+
+spec/spec_helper.rb:
+  mock_with: ':rspec'
+  coverage_report: true
+  hiera_config: spec/fixtures/hiera.yaml

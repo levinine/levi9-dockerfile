@@ -3,9 +3,13 @@
 require 'spec_helper'
 
 describe 'dockerfile::config::multistage' do
+
   let(:title) { 'namevar' }
   let(:params) do
-    {}
+    {
+        dockerfile: '/tmp/Dockerfile',
+        conf: {},
+    }
   end
 
   on_supported_os.each do |os, os_facts|
