@@ -5,6 +5,7 @@ dockerfile::configs:
     conf: 'text'
     home: /tmp
   Multistage:
+    dockerfile_name: Multistage
     type: multistage
     home: /tmp
     conf:
@@ -102,7 +103,7 @@ dockerfile::configs:
           cmd: curl http://localhost
         order: '20'
   Multistage2:
-    dockerfile_name: Dockerfile2
+    dockerfile_name: Multistage2
     type: multistage
     home: /tmp
     conf:
