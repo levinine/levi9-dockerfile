@@ -19,17 +19,16 @@ describe 'dockerfile::config::plain' do
       let(:title) { title }
       let(:params) { params }
 
-      on_supported_os.each do |os, os_facts|
-        context "on #{os}" do
-          let(:facts) { os_facts }
-          let(:title) { title }
-          let(:params) { params }
-          it { is_expected.to compile }
-          it do
-            is_expected.to contain_file(dockerfile)
-          end
+      context "title #{title}" do
+
+        let(:title) { title }
+        let(:params) { params }
+        it { is_expected.to compile }
+        it do
+          is_expected.to contain_file(dockerfile)
         end
       end
     end
   end
 end
+

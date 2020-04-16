@@ -20,18 +20,17 @@ describe 'dockerfile::config::stage' do
         let(:title) { title }
         let(:params) { params }
 
-        on_supported_os.each do |os, os_facts|
-          context "on #{os}" do
-            let(:facts) { os_facts }
-            let(:title) { title }
-            # let(:params) { params }
-            it { is_expected.to compile }
-            it do
-              is_expected.to contain_concat__fragment(title)
-            end
+        context "title #{title}" do
+
+          let(:title) { title }
+          # let(:params) { params }
+          it { is_expected.to compile }
+          it do
+            is_expected.to contain_concat__fragment(title)
           end
         end
       end
     end
   end
 end
+
