@@ -1,0 +1,131 @@
+dockerfile::configs:
+  Plain:
+    type: plain
+    dockerfile_name: Plain
+    conf: 'text'
+    home: /tmp
+  Multistage:
+    dockerfile_name: Multistage
+    type: multistage
+    home: /tmp
+    conf:
+      Stage1:
+        ensure: present
+        arg:
+          BUILD_NUM: latest
+          SOMEARG1: ''
+          SOMEARG2: 5
+        from:
+          image: centos:7.6.1810
+          as: TEST
+        env:
+          NUM: $BUILD_NUM
+          SOMEENV: test
+        label:
+          'com.levi9.cluster': cluster
+          'com.levi9.role': role
+        expose: 80/tcp
+        copy:
+          from: 0
+          source:
+            - /tmp with space
+            - /test
+          destination: /home
+        add:
+          chown: '0:0'
+          source: /tmp
+          destination: /home
+        volume: test
+        cmd:
+          - /bin/sh
+          - -c
+          - top
+        entrypoint:
+          - /bin/sh
+          - -c
+          - top
+        user: '0:0'
+        run:
+          - apt-get update
+          - apt-get clean
+        workdir: /tmp
+        stopsignal: signal
+        shell:
+          - powershell
+          - noprofile
+        order: '10'
+      Stage2:
+        onbuild: false
+        ensure: present
+        from:
+          image: centos:7.6.1810
+        env:
+          NUM: $BUILD_NUM
+          SOMEENV: test
+        label:
+          'com.levi9.cluster': cluster
+          'com.levi9.role': role
+        expose: 80/tcp
+        copy:
+          from: 0
+          chown: '0:0'
+          source:
+            - /tmp
+            - /test
+          destination: /home
+        add:
+          chown: '0:0'
+          source: /tmp
+          destination: /home
+        volume: test
+        cmd:
+          - /bin/sh
+          - -c
+          - top
+        entrypoint:
+          - /bin/sh
+          - -c
+          - top
+        user: '0:0'
+        run:
+          - apt-get update
+          - apt-get clean
+        workdir: /tmp
+        stopsignal: signal
+        shell:
+          - powershell
+          - noprofile
+        healthcheck:
+          interval: 30s
+          timeout: 30s
+          start-period: 0s
+          retries: 3
+          cmd: curl http://localhost
+        order: '20'
+  Multistage2:
+    dockerfile_name: Multistage2
+    type: multistage
+    home: /tmp
+    conf:
+      Stage1:
+        from:
+          image: centos:7.6.1810
+          as: TEST
+      Copy1:
+        copy:
+          from: TEST
+          source:
+            - /tmp1
+          destination: /home
+      Run1:
+        ensure: absent
+        run:
+          - apt-get update
+          - apt-get clean
+      Copy2:
+        copy:
+          source:
+            - /tmp2
+          destination: /home
+      Stage2:
+        expose: 80/tcp

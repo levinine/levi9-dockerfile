@@ -3,14 +3,12 @@
 require 'spec_helper'
 
 describe 'dockerfile::config' do
-  let(:title) { 'namevar' }
-  let(:params) do
-    {}
-  end
-
-  on_supported_os.each do |os, os_facts|
-    context "on #{os}" do
-      let(:facts) { os_facts }
+  hiera = Hiera.new(config: 'spec/fixtures/hiera.yaml')
+  config = hiera.lookup('dockerfile::configs', nil, nil)
+  config.each do |title, params|
+    context "title #{title}" do
+      let(:title) { title }
+      let(:params) { params }
 
       it { is_expected.to compile }
     end
