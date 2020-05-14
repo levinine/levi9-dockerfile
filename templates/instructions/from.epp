@@ -2,7 +2,7 @@
 <% if $onbuild { -%>
 <%= 'ONBUILD ' -%>
 <% } -%>
-FROM <%= $from['image'] %><% unless empty($from['as']) { -%>
+FROM <% unless empty($from['platform']) { -%><%= "--platform=${from['platform']} " -%><% } -%><%= $from['image'] %><% unless empty($from['as']) { -%>
  AS <%= $from['as'] -%>
 <% } %>
 <% } -%>

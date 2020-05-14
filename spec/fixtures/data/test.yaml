@@ -16,6 +16,7 @@ dockerfile::configs:
           SOMEARG1: ''
           SOMEARG2: 5
         from:
+          platform: linux/amd64
           image: centos:7.6.1810
           as: TEST
         env:

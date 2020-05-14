@@ -1,6 +1,6 @@
 {
   "name": "levinine-dockerfile",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "author": "levinine",
   "summary": "Manage Dockerfile",
   "license": "Apache-2.0",
