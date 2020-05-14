@@ -1,0 +1,1 @@
+<% unless empty($comment) { -%><%= "# ${comment}\r\n" -%><% } -%>

@@ -69,6 +69,7 @@ dockerfile::configs:
     conf:
       Stage1:
         ensure: present
+        comment: Build some docker image
         arg:
           BUILD_NUM: latest
           SOMEARG1: ''
@@ -174,6 +175,7 @@ dockerfile::configs:
           image: centos:7.6.1810
           as: TEST
       Copy1:
+        comment: Copy some files
         copy:
           from: TEST
           source:
@@ -191,6 +193,7 @@ dockerfile::configs:
             - /tmp2
           destination: /home
       Stage2:
+        comment: Expose some ports
         expose: 80/tcp
 ```
 

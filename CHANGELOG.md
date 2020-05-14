@@ -1,3 +1,7 @@
+# Version 1.6.0
+
+Added support for comments in stages
+
 # Version 1.5.1
 
 Added support for platform flag in FROM instruction
