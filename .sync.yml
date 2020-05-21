@@ -1,13 +1,13 @@
 ---
 appveyor.yml:
   delete: true
-  unmanaged: true
+  unmanaged: false
 .gitlab-ci.yml:
   delete: true
-  unmanaged: true
+  unmanaged: false
 .travis.yml:
   delete: true
-  unmanaged: true
+  unmanaged: false
 
 spec/spec_helper.rb:
   mock_with: ':rspec'
