@@ -9,7 +9,7 @@
 <% unless empty($healthcheck['interval']) { -%><%= "--interval=${$healthcheck['interval']} " -%><% } -%>
 <% unless empty($healthcheck['timeout']) { -%><%= "--timeout=${$healthcheck['timeout']} " -%><% } -%>
 <% unless empty($healthcheck['start-period']) { -%><%= "--start-period=${$healthcheck['start-period']} " -%><% } -%>
-<% unless empty($healthcheck['retries']) { -%><%= "--retries=${$healthcheck['retries']} " -%><% } -%>
+<% unless empty(String($healthcheck['retries'])) { -%><%= "--retries=${$healthcheck['retries']} " -%><% } -%>
 <% unless empty($healthcheck['cmd']) { -%><%= "CMD ${$healthcheck['cmd']} " -%><% } %>
 <% } -%>
 <% } -%>

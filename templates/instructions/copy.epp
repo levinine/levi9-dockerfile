@@ -2,5 +2,5 @@
 <% if $onbuild { -%>
 <%= 'ONBUILD ' -%>
 <% } -%>
-COPY <% unless empty($copy['from']) { -%><%= "--from=${copy['from']} " -%><% } -%><% unless empty($copy['chown']) { -%><%= "--chown=${copy['chown']} " -%><% } -%><%= suffix(prefix(([$copy['source']] + [$copy['destination']]).flatten, '"'), '"') %>
+COPY <% unless empty(String($copy['from'])) { -%><%= "--from=${copy['from']} " -%><% } -%><% unless empty(String($copy['chown'])) { -%><%= "--chown=${copy['chown']} " -%><% } -%><%= suffix(prefix(([$copy['source']] + [$copy['destination']]).flatten, '"'), '"') %>
 <% } %>

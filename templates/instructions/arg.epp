@@ -3,7 +3,7 @@
 <% if $onbuild { -%>
 <%= 'ONBUILD ' -%>
 <% } -%>
-ARG <%= $key -%><% unless empty($value) { -%>
+ARG <%= $key -%><% unless empty(String($value)) { -%>
 =<%= $value -%>
 <% } %>
 <% } -%>
