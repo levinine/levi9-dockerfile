@@ -1,1 +1,9 @@
-<% unless empty($comment) { -%><%= "# ${comment}\r\n" -%><% } -%>
+<% unless empty($comment) { -%>
+<% if $comment =~ Array[String] { -%>
+<% $comment.each | $value| { -%>
+# <%= $value %>
+<% } -%>
+<% } else { -%>
+# <%= $comment %>
+<% } -%>
+<% } -%>

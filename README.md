@@ -67,6 +67,10 @@ dockerfile::configs:
     type: multistage
     home: /var/lib/jenkins/Docker-Build
     conf:
+      Header:
+        comment:
+          - Starting comment 1
+          - Starting comment 2
       Stage1:
         ensure: present
         comment: Build some docker image
@@ -194,7 +198,9 @@ dockerfile::configs:
           destination: /home
       Stage2:
         comment: Expose some ports
-        expose: 80/tcp
+        expose:
+          - 80/tcp
+          - 8080/tcp
 ```
 
 #### Plain

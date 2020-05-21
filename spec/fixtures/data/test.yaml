@@ -9,6 +9,10 @@ dockerfile::configs:
     type: multistage
     home: /tmp
     conf:
+      Header:
+        comment:
+          - Starting comment 1
+          - Starting comment 2
       Stage1:
         ensure: present
         arg:
@@ -129,4 +133,6 @@ dockerfile::configs:
             - /tmp2
           destination: /home
       Stage2:
-        expose: 80/tcp
+        expose:
+          - 80/tcp
+          - 8080/tcp

@@ -7,6 +7,8 @@
 #   Target of concat::fragment.
 # @param ensure
 #   Should stage exist in Dockerfile.
+# @param comment
+#   Use to add comment to stage.
 # @param arg
 #   ARG instruction of Dockerfile.
 # @param from
@@ -46,7 +48,7 @@ define dockerfile::config::stage
   (
     String $dockerfile,
     String $ensure                                                           = 'present',
-    Variant[String, Undef] $comment                                          = undef,
+    Variant[Array[String], String, Undef] $comment                           = undef,
     Variant[Hash, Undef] $arg                                                = undef,
     Variant[Hash, Undef] $from                                               = undef,
     Variant[Hash, Undef] $copy                                               = undef,
