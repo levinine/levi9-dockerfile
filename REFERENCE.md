@@ -237,6 +237,14 @@ Should stage exist in Dockerfile.
 
 Default value: 'present'
 
+##### `comment`
+
+Data type: `Variant[Array[String], String, Undef]`
+
+Use to add comment to stage.
+
+Default value: `undef`
+
 ##### `arg`
 
 Data type: `Variant[Hash, Undef]`
