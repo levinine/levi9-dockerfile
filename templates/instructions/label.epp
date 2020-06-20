@@ -3,7 +3,7 @@
 <% if $onbuild { -%>
 <%= 'ONBUILD ' -%>
 <% } -%>
-LABEL <%= $key -%><% unless empty($value) { -%>
+LABEL <%= $key -%><% unless empty(String($value)) { -%>
 ="<%= $value -%>"
 <% } -%>
 <% } -%>

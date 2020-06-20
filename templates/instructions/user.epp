@@ -1,4 +1,4 @@
-<% unless empty($user) { -%>
+<% unless empty(String($user)) { -%>
 <% if $onbuild { -%>
 <%= 'ONBUILD ' -%>
 <% } -%>

@@ -2,6 +2,8 @@
 
 Implemented acceptance tests with litmus
 
+Removed warnings when using empty function
+
 # Version 1.6.0
 
 Added support for comments in stages

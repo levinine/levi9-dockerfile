@@ -1,4 +1,4 @@
-<% unless empty($stopsignal) { -%>
+<% unless empty(String($stopsignal)) { -%>
 <% if $onbuild { -%>
 <%= 'ONBUILD ' -%>
 <% } -%>

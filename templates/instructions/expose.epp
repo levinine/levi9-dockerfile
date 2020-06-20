@@ -1,4 +1,4 @@
-<% unless empty($expose) { -%>
+<% unless empty(String($expose)) { -%>
 <% if $expose =~ Array[Variant[String, Integer]] { -%>
 <% $expose.each | $value| { -%>
 <% if $onbuild { -%>
