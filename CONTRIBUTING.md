@@ -14,6 +14,18 @@ pdk validate
 pdk test unit --verbose
 ```
 
+#### Run acceptance tests:
+
+```
+pdk bundle exec rake 'litmus:provision[docker, litmusimage/centos:7]'
+pdk bundle exec rake litmus:install_agent
+cp spec/fixtures/data/test.yaml data/common.yaml
+pdk bundle exec rake litmus:install_module
+pdk bundle exec rake litmus:acceptance:parallel
+rm data/common.yaml
+pdk bundle exec rake "litmus:tear_down"
+```
+
 #### Generate documentation with [Puppet Strings](https://puppet.com/docs/puppet/latest/puppet_strings.html):
 
 ```

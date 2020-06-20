@@ -1,3 +1,7 @@
+# Version 2.0.0
+
+Implemented acceptance tests with litmus
+
 # Version 1.6.0
 
 Added support for comments in stages

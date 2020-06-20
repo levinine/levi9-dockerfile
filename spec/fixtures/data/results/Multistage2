@@ -1,0 +1,7 @@
+FROM centos:7.6.1810 AS TEST
+# Copy some files
+COPY --from=TEST ["/tmp1", "/home"]
+COPY ["/tmp2", "/home"]
+# Expose some ports
+EXPOSE 80/tcp
+EXPOSE 8080/tcp
