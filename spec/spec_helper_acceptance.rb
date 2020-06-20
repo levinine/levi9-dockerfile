@@ -4,3 +4,12 @@ require 'puppet_litmus'
 require 'spec_helper_acceptance_local' if File.file?(File.join(File.dirname(__FILE__), 'spec_helper_acceptance_local.rb'))
 
 PuppetLitmus.configure!
+
+def get_dockerfiles
+  dockerfiles = {}
+  Dir[ File.join(File.dirname(__FILE__), 'fixtures/data/results/*') ].select{ |f| File.file? f }.map{ |f|
+    key = File.basename f
+    dockerfiles[key] = File.read f
+  }
+  dockerfiles
+end

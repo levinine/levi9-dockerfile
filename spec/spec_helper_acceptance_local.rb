@@ -11,9 +11,9 @@ end
 def setup_test_directory
   basedir = case os[:family]
             when 'windows'
-              'c:/concat_test'
+              'c:/Dockerfiles'
             else
-              '/tmp/concat_test'
+              '/tmp/Dockerfiles'
             end
   pp = <<-MANIFEST
     file { '#{basedir}':
@@ -21,10 +21,6 @@ def setup_test_directory
       force   => true,
       purge   => true,
       recurse => true,
-    }
-    file { '#{basedir}/file':
-      content => "file exists\n",
-      force   => true,
     }
   MANIFEST
   apply_manifest(pp)
